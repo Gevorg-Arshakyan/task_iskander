@@ -1,56 +1,79 @@
 <template>
   <section class="bg-gray-100 py-4">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center space-x-8 overflow-x-auto">
+    <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center space-x-6 overflow-x-auto">
         <!-- Скидки -->
-        <div class="flex items-center space-x-2 flex-shrink-0">
-          <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm">
-            <span class="text-[#4A8FB9] text-xs font-bold">%</span>
+        <div
+          class="flex flex-col items-center space-y-2 flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
+        >
+          <div
+            class="w-[60px] h-[60px] bg-white rounded-full overflow-hidden flex items-center justify-center shadow-sm border border-gray-200"
+          >
+            <img src="/cat1.png" alt="Скидки" class="w-full h-full" />
           </div>
-          <span class="text-sm text-gray-700">Скидки</span>
+          <span class="text-xs text-gray-700 font-medium">Скидки</span>
         </div>
 
         <!-- Акции -->
-        <div class="flex items-center space-x-2 flex-shrink-0">
-          <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm">
-            <span class="text-[#4A8FB9] text-xs font-bold">!</span>
+        <div
+          class="flex flex-col items-center space-y-2 flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
+        >
+          <div
+            class="w-[60px] h-[60px] bg-white rounded-full overflow-hidden flex items-center justify-center shadow-sm border border-gray-200"
+          >
+            <img src="/cat1.png" alt="Скидки" class="w-full h-full" />
           </div>
-          <span class="text-sm text-gray-700">Акции</span>
+          <span class="text-xs text-gray-700 font-medium">Акции</span>
         </div>
 
         <!-- Распродажа -->
-        <div class="flex items-center space-x-2 flex-shrink-0">
-          <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm">
-            <span class="text-[#4A8FB9] text-xs font-bold">S</span>
+        <div
+          class="flex flex-col items-center space-y-2 flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
+        >
+          <div
+            class="w-[60px] h-[60px] bg-white rounded-full overflow-hidden flex items-center justify-center shadow-sm border border-gray-200"
+          >
+            <img src="/cat1.png" alt="Скидки" class="w-full h-full" />
           </div>
-          <span class="text-sm text-gray-700">Распродажа</span>
+          <span class="text-xs text-gray-700 font-medium">Распродажа</span>
         </div>
 
         <!-- Подарки -->
-        <div class="flex items-center space-x-2 flex-shrink-0">
-          <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm">
-            <span class="text-[#4A8FB9] text-xs font-bold">G</span>
+        <div
+          class="flex flex-col items-center space-y-2 flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
+        >
+          <div
+            class="w-[60px] h-[60px] bg-white rounded-full overflow-hidden flex items-center justify-center shadow-sm border border-gray-200"
+          >
+            <img src="/cat1.png" alt="Скидки" class="w-full h-full" />
           </div>
-          <span class="text-sm text-gray-700">Подарки</span>
+          <span class="text-xs text-gray-700 font-medium">Подарки</span>
         </div>
 
         <!-- Подарки (duplicate) -->
-        <div class="flex items-center space-x-2 flex-shrink-0">
-          <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm">
-            <span class="text-[#4A8FB9] text-xs font-bold">G</span>
+        <div
+          class="flex flex-col items-center space-y-2 flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
+        >
+          <div
+            class="w-[60px] h-[60px] bg-white rounded-full overflow-hidden flex items-center justify-center shadow-sm border border-gray-200"
+          >
+            <img src="/cat1.png" alt="Скидки" class="w-full h-full" />
           </div>
-          <span class="text-sm text-gray-700">Подарки</span>
+          <span class="text-xs text-gray-700 font-medium">Подарки</span>
         </div>
 
         <!-- Empty circles for spacing -->
-        <div class="flex items-center space-x-2 flex-shrink-0">
-          <div class="w-8 h-8 bg-gray-200 rounded-full"></div>
+        <div class="flex flex-col items-center space-y-2 flex-shrink-0">
+          <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+          <span class="text-xs text-gray-400">...</span>
         </div>
-        <div class="flex items-center space-x-2 flex-shrink-0">
-          <div class="w-8 h-8 bg-gray-200 rounded-full"></div>
+        <div class="flex flex-col items-center space-y-2 flex-shrink-0">
+          <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+          <span class="text-xs text-gray-400">...</span>
         </div>
-        <div class="flex items-center space-x-2 flex-shrink-0">
-          <div class="w-8 h-8 bg-gray-200 rounded-full"></div>
+        <div class="flex flex-col items-center space-y-2 flex-shrink-0">
+          <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+          <span class="text-xs text-gray-400">...</span>
         </div>
       </div>
     </div>

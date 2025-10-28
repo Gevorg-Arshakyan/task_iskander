@@ -1,9 +1,10 @@
 <template>
   <section class="py-12 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
       <div class="flex items-center justify-between mb-8">
         <h2 class="text-3xl font-bold text-gray-900">Хиты продаж</h2>
+        <a href="#" class="text-[#4A8FB9] hover:text-blue-800 font-medium"> перейти в каталог </a>
       </div>
 
       <!-- Carousel Container -->
@@ -68,14 +69,16 @@
         </div>
 
         <!-- Pagination Dots -->
-        <div class="flex justify-center mt-8 space-x-2">
-          <button
-            v-for="(slide, index) in totalSlides"
-            :key="index"
-            @click="goToSlide(index)"
-            class="w-2 h-2 rounded-full transition-colors"
-            :class="index === currentSlide ? 'bg-blue-600' : 'bg-gray-300'"
-          />
+        <div class="flex justify-center mt-8">
+          <div class="flex space-x-1">
+            <button
+              v-for="(slide, index) in totalSlides"
+              :key="index"
+              @click="goToSlide(index)"
+              class="h-1 transition-all duration-300 rounded-full"
+              :class="index === currentSlide ? 'w-8 bg-[#4A8FB9]' : 'w-2 bg-gray-300'"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -95,78 +98,58 @@ const products = ref([
     currency: 'c',
     inStock: true,
     features: ['Комплект'],
-    image: '/api/placeholder/200/200',
+    image: '/11.jpg',
     quantity: 999,
   },
   {
     id: 2,
-    name: 'Держатель для лейки BOOU PG605 Держатель для лейки BOOU PG605..',
+    name: 'Держатель для лейки BOOU PG605',
     price: '1294',
     currency: 'c',
     inStock: true,
     features: ['Комплект'],
-    image: '/api/placeholder/200/200',
+    image: '/11.jpg',
     quantity: 0,
   },
   {
     id: 3,
-    name: 'Держатель для лейки BOOU PG605 Держатель для лейки BOOU PG605..',
+    name: 'Держатель для лейки BOOU PG605',
     price: '1294',
     currency: 'c',
     inStock: true,
     features: ['Комплект'],
-    image: '/api/placeholder/200/200',
+    image: '/11.jpg',
     quantity: 1,
   },
   {
     id: 4,
-    name: 'Держатель для лейки BOOU PG605 Держатель для лейки BOOU PG605..',
+    name: 'Держатель для лейки BOOU PG605',
     price: '1294',
     currency: 'c',
     inStock: true,
     features: ['Комплект'],
-    image: '/api/placeholder/200/200',
-    quantity: 5,
-  },
-  {
-    id: 5,
-    name: 'Держатель для лейки BOOU PG605 Держатель для лейки BOOU PG605..',
-    price: '1294',
-    currency: 'c',
-    inStock: true,
-    features: ['Комплект'],
-    image: '/api/placeholder/200/200',
-    quantity: 2,
-  },
-  {
-    id: 6,
-    name: 'Держатель для лейки BOOU PG605 Держатель для лейки BOOU PG605..',
-    price: '1294',
-    currency: 'c',
-    inStock: true,
-    features: ['Комплект'],
-    image: '/api/placeholder/200/200',
-    quantity: 3,
-  },
-  {
-    id: 7,
-    name: 'Держатель для лейки BOOU PG605 Держатель для лейки BOOU PG605..',
-    price: '1294',
-    currency: 'c',
-    inStock: true,
-    features: ['Комплект'],
-    image: '/api/placeholder/200/200',
+    image: '/11.jpg',
     quantity: 1,
   },
   {
-    id: 8,
-    name: 'Держатель для лейки BOOU PG605 Держатель для лейки BOOU PG605..',
+    id: 5,
+    name: 'Держатель для лейки BOOU PG605',
     price: '1294',
     currency: 'c',
     inStock: true,
     features: ['Комплект'],
-    image: '/api/placeholder/200/200',
-    quantity: 4,
+    image: '/11.jpg',
+    quantity: 1,
+  },
+  {
+    id: 6,
+    name: 'Держатель для лейки BOOU PG605',
+    price: '1294',
+    currency: 'c',
+    inStock: true,
+    features: ['Комплект'],
+    image: '/11.jpg',
+    quantity: 1,
   },
 ])
 

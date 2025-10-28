@@ -4,21 +4,16 @@
   >
     <!-- Product Image -->
     <div class="aspect-square bg-[#7EC4E8] relative">
-      <div class="w-full h-full bg-[#7EC4E8] flex items-center justify-center">
-        <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-          />
-        </svg>
-      </div>
+      <img :src="product.image" :alt="product.name" class="w-full h-full object-cover" />
 
       <!-- Heart Icon -->
-      <button class="absolute top-3 right-3 p-2 bg-white rounded-full shadow-sm hover:bg-gray-50">
+      <button
+        @click="toggleLike"
+        class="absolute top-3 right-3 p-2 bg-white rounded-full shadow-sm hover:bg-gray-50 transition-colors"
+      >
         <svg
-          class="w-5 h-5 text-gray-400 hover:text-red-500"
+          class="w-5 h-5 transition-colors"
+          :class="isLiked ? 'text-red-500 fill-red-500' : 'text-gray-400 hover:text-red-500'"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -58,7 +53,7 @@
         <div class="flex items-center border border-gray-300 rounded-lg">
           <button
             @click="decreaseQuantity"
-            class="px-3 py-2 text-gray-600 hover:text-gray-800 hover:bg-gray-50 rounded-l-lg"
+            class="px-3 py-2 text-gray-600 hover:text-white hover:bg-gray-600 rounded-l-lg transition-colors"
             :disabled="product.quantity <= 0"
           >
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -77,7 +72,7 @@
 
           <button
             @click="increaseQuantity"
-            class="px-3 py-2 text-gray-600 hover:text-gray-800 hover:bg-gray-50 rounded-r-lg"
+            class="px-3 py-2 text-gray-600 hover:text-white hover:bg-gray-600 rounded-r-lg transition-colors"
             :class="
               product.quantity === 0 ? 'bg-[#4A8FB9] text-white hover:bg-blue-700 rounded-full' : ''
             "
@@ -108,6 +103,12 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['quantity-change'])
+
+const isLiked = ref(false)
+
+const toggleLike = () => {
+  isLiked.value = !isLiked.value
+}
 
 const decreaseQuantity = () => {
   if (props.product.quantity > 0) {
