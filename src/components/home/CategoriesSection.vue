@@ -24,7 +24,7 @@
 
           <!-- Category Image Container (Bottom) -->
           <div
-            class="aspect-square bg-white rounded-lg flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-300"
+            class="aspect-square bg-white rounded-lg flex items-center justify-center overflow-hidden  transition-transform duration-300"
           >
             <img :src="category.image" :alt="category.name" class="h-full w-full" />
           </div>
