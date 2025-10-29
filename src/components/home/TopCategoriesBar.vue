@@ -55,7 +55,7 @@ const items = ref<Item[]>([
 
 const select = (i: number) => {
   const item = items.value[i]
-  if (item.type !== 'real') return
+  if (!item || item.type !== 'real') return
   item.selected = !item.selected
 }
 </script>

@@ -138,33 +138,50 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
+import type { PropType } from 'vue'
+
+type Product = {
+  id: string | number
+  image: string
+  name: string
+  price: number | string
+  currency: string
+  inStock: boolean
+  features: string[]
+  quantity: number
+  liked?: boolean
+  selected?: boolean
+}
+
+type SectionType = 'kits' | 'suggestions'
+
+defineProps({
   title: {
     type: String,
     required: true,
   },
   products: {
-    type: Array,
+    type: Array as PropType<Product[]>,
     required: true,
   },
   type: {
-    type: String,
+    type: String as PropType<SectionType>,
     required: true,
-    validator: (value: string) => ['kits', 'suggestions'].includes(value),
+    validator: (value: SectionType) => ['kits', 'suggestions'].includes(value),
   },
 })
 
-const toggleLike = (product: any) => {
+const toggleLike = (product: Product) => {
   product.liked = !product.liked
 }
 
-const decreaseQuantity = (product: any) => {
+const decreaseQuantity = (product: Product) => {
   if (product.quantity > 0) {
     product.quantity--
   }
 }
 
-const increaseQuantity = (product: any) => {
+const increaseQuantity = (product: Product) => {
   product.quantity++
 }
 </script>
