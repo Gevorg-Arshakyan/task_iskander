@@ -1,9 +1,13 @@
 <template>
-  <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+  <div class="bg-white max-w-[289px] py-4 px-[30px] rounded-lg shadow-sm ">
     <!-- Stock Status -->
     <div class="mb-6">
-      <h2 class="text-lg font-semibold text-gray-900 mb-4">В наличии</h2>
-
+      <!-- Availability -->
+      <p
+        class=" text-[#73CB5E] mb-0.5 font-medium text-[16px] leading-[100%]"
+      >
+        В наличии
+      </p>
       <!-- Price -->
       <div class="mb-6">
         <span class="text-3xl font-bold text-gray-900"
@@ -12,44 +16,43 @@
       </div>
 
       <!-- Quantity Selector -->
-      <div class="mb-6">
-        <div class="flex items-center border border-gray-300 rounded-lg w-fit">
-          <button
-            @click="decreaseQuantity"
-            class="px-4 py-3 text-gray-600 hover:text-white hover:bg-gray-600 rounded-l-lg transition-colors"
-            :disabled="quantity <= 0"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
-            </svg>
-          </button>
+      <div class="flex items-center mb-5">
+        <!-- Minus -->
+        <button
+          @click="decreaseQuantity"
+          class="w-11 h-11 flex items-center justify-center rounded-full bg-[#F5F5F5] hover:bg-[#3286C3] text-black hover:text-white transition-colors"
+          :class="product.quantity <= 0 ? 'opacity-50 cursor-not-allowed' : ''"
+          :disabled="product.quantity <= 0"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+          </svg>
+        </button>
 
-          <span
-            class="px-4 py-3 text-lg font-medium min-w-[4rem] text-center border-x border-gray-300"
-          >
-            {{ quantity }}
-          </span>
+        <!-- Qty -->
+        <span class="px-3 py-2 text-base font-semibold min-w-[3rem] text-center text-gray-900">
+          {{ product.quantity }}
+        </span>
 
-          <button
-            @click="increaseQuantity"
-            class="px-4 py-3 text-gray-600 hover:text-white hover:bg-gray-600 rounded-r-lg transition-colors"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-              />
-            </svg>
-          </button>
-        </div>
+        <!-- Plus -->
+        <button
+          @click="increaseQuantity"
+          class="w-11 h-11 flex items-center justify-center rounded-full bg-[#F5F5F5] hover:bg-[#3286C3] text-black hover:text-white transition-colors"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+            />
+          </svg>
+        </button>
       </div>
-
       <!-- Add to Cart Button -->
       <button
         @click="addToCart"
-        class="w-full bg-[#4A8FB9] text-white py-4 px-6 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+        class="w-full bg-[#2C7EB8] text-white  py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
       >
         Добавить в корзину
       </button>

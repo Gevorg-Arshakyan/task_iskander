@@ -6,11 +6,13 @@
       <slot />
     </main>
 
-    <Footer />
+    <slot name="footer">
+      <DefaultFooter />
+    </slot>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import Header from '@/components/header/Header.vue'
-import Footer from '@/components/footer/Footer.vue'
+import DefaultFooter from '@/components/footer/DefaultFooter.vue'
 </script>

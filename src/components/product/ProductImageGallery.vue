@@ -4,34 +4,36 @@
     <div class="flex flex-col gap-2">
       <button
         @click="scrollUp"
-        class="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
-        :disabled="currentThumbnailIndex === 0"
+        class="p-2  self-center transition-colors cursor-pointer disabled:opacity-40"
+        :disabled="isAtTop"
+        aria-label="Scroll thumbnails up"
       >
         <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
         </svg>
       </button>
 
-      <div class="flex flex-col gap-2 max-h-80 overflow-hidden">
+      <div class="flex flex-col gap-2 max-h-96 overflow-hidden" @wheel.prevent="onWheel">
         <button
-          v-for="(image, index) in images"
-          :key="index"
-          @click="selectImage(index)"
+          v-for="(image, i) in visibleThumbnails"
+          :key="currentThumbnailIndex + i"
+          @click="selectImage(currentThumbnailIndex + i)"
           class="w-16 h-16 rounded-lg overflow-hidden border-2 transition-colors"
           :class="
-            index === currentImageIndex
+            (currentThumbnailIndex + i) === currentImageIndex
               ? 'border-[#4A8FB9]'
               : 'border-gray-200 hover:border-gray-300'
           "
         >
-          <img :src="image" :alt="`Thumbnail ${index + 1}`" class="w-full h-full object-cover" />
+          <img :src="image" :alt="`Thumbnail ${currentThumbnailIndex + i + 1}`" class="w-full h-full object-cover" />
         </button>
       </div>
 
       <button
         @click="scrollDown"
-        class="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
-        :disabled="currentThumbnailIndex >= images.length - 4"
+        class="p-2 self-center cursor-pointer transition-colors disabled:opacity-40"
+        :disabled="isAtBottom"
+        aria-label="Scroll thumbnails down"
       >
         <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path
@@ -79,7 +81,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+
+const VISIBLE_COUNT = 4
 
 const props = defineProps({
   images: {
@@ -92,19 +96,45 @@ const currentImageIndex = ref(0)
 const currentThumbnailIndex = ref(0)
 const isLiked = ref(false)
 
+const total = computed(() => props.images?.length ?? 0)
+const maxStart = computed(() => Math.max(total.value - VISIBLE_COUNT, 0))
+
+const visibleThumbnails = computed(() => {
+  const start = Math.min(currentThumbnailIndex.value, maxStart.value)
+  const end = start + VISIBLE_COUNT
+  return props.images.slice(start, end)
+})
+
+const isAtTop = computed(() => currentThumbnailIndex.value <= 0)
+const isAtBottom = computed(() => currentThumbnailIndex.value >= maxStart.value)
+
 const selectImage = (index: number) => {
   currentImageIndex.value = index
+  // If selected image goes out of current window, adjust window to include it
+  if (index < currentThumbnailIndex.value) {
+    currentThumbnailIndex.value = index
+  } else if (index > currentThumbnailIndex.value + VISIBLE_COUNT - 1) {
+    currentThumbnailIndex.value = Math.min(index - (VISIBLE_COUNT - 1), maxStart.value)
+  }
 }
 
 const scrollUp = () => {
-  if (currentThumbnailIndex.value > 0) {
+  if (!isAtTop.value) {
     currentThumbnailIndex.value--
   }
 }
 
 const scrollDown = () => {
-  if (currentThumbnailIndex.value < props.images.length - 4) {
+  if (!isAtBottom.value) {
     currentThumbnailIndex.value++
+  }
+}
+
+const onWheel = (e: WheelEvent) => {
+  if (e.deltaY > 0) {
+    scrollDown()
+  } else if (e.deltaY < 0) {
+    scrollUp()
   }
 }
 
