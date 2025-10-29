@@ -1,6 +1,7 @@
 <template>
   <div
-    class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow"
+    @click="navigateToProduct"
+    class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow cursor-pointer"
   >
     <!-- Product Image -->
     <div class="aspect-square bg-[#7EC4E8] relative">
@@ -94,6 +95,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const props = defineProps({
   product: {
@@ -103,20 +105,28 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['quantity-change'])
+const router = useRouter()
 
 const isLiked = ref(false)
 
-const toggleLike = () => {
+const navigateToProduct = () => {
+  router.push(`/product/${props.product.id}`)
+}
+
+const toggleLike = (event: Event) => {
+  event.stopPropagation() // Prevent navigation when clicking heart
   isLiked.value = !isLiked.value
 }
 
-const decreaseQuantity = () => {
+const decreaseQuantity = (event: Event) => {
+  event.stopPropagation() // Prevent navigation when clicking quantity buttons
   if (props.product.quantity > 0) {
     emit('quantity-change', props.product.id, props.product.quantity - 1)
   }
 }
 
-const increaseQuantity = () => {
+const increaseQuantity = (event: Event) => {
+  event.stopPropagation() // Prevent navigation when clicking quantity buttons
   emit('quantity-change', props.product.id, props.product.quantity + 1)
 }
 </script>
