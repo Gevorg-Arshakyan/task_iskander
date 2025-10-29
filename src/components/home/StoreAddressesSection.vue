@@ -1,41 +1,41 @@
 <template>
-  <section class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class=" relative pb-8">
+    <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
       <div class="flex items-center justify-between mb-8">
-        <h2 class="text-3xl font-bold text-gray-900">Адреса магазинов</h2>
+        <h2 class="text-3xl text-black font-semibold text-[25px] leading-[100%]">Адреса магазинов</h2>
       </div>
 
       <!-- Carousel Container -->
       <div class="relative">
-        <!-- Navigation Arrows -->
-        <button
-          @click="previousSlide"
-          class="absolute left-0 top-1/2 -translate-y-1/2 -ml-4 z-10 bg-white rounded-full shadow-lg p-3 hover:shadow-xl transition-shadow"
-        >
-          <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-        </button>
+<!--        &lt;!&ndash; Navigation Arrows &ndash;&gt;-->
+<!--        <button-->
+<!--          @click="previousSlide"-->
+<!--          class="absolute left-0 top-1/2 -translate-y-1/2 -ml-4 z-10 bg-white rounded-full shadow-lg p-3 hover:shadow-xl transition-shadow"-->
+<!--        >-->
+<!--          <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">-->
+<!--            <path-->
+<!--              stroke-linecap="round"-->
+<!--              stroke-linejoin="round"-->
+<!--              stroke-width="2"-->
+<!--              d="M15 19l-7-7 7-7"-->
+<!--            />-->
+<!--          </svg>-->
+<!--        </button>-->
 
-        <button
-          @click="nextSlide"
-          class="absolute right-0 top-1/2 -translate-y-1/2 -mr-4 z-10 bg-white rounded-full shadow-lg p-3 hover:shadow-xl transition-shadow"
-        >
-          <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </button>
+<!--        <button-->
+<!--          @click="nextSlide"-->
+<!--          class="absolute right-0 top-1/2 -translate-y-1/2 -mr-4 z-10 bg-white rounded-full shadow-lg p-3 hover:shadow-xl transition-shadow"-->
+<!--        >-->
+<!--          <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">-->
+<!--            <path-->
+<!--              stroke-linecap="round"-->
+<!--              stroke-linejoin="round"-->
+<!--              stroke-width="2"-->
+<!--              d="M9 5l7 7-7 7"-->
+<!--            />-->
+<!--          </svg>-->
+<!--        </button>-->
 
         <!-- Store Cards Carousel -->
         <div class="overflow-hidden">
@@ -60,14 +60,16 @@
         </div>
 
         <!-- Pagination Dots -->
-        <div class="flex justify-center mt-8 space-x-2">
-          <button
-            v-for="(slide, index) in totalSlides"
-            :key="index"
-            @click="goToSlide(index)"
-            class="w-2 h-2 rounded-full transition-colors"
-            :class="index === currentSlide ? 'bg-blue-600' : 'bg-gray-300'"
-          />
+        <div class="flex justify-center mt-8">
+          <div class="flex space-x-1">
+            <button
+              v-for="(slide, index) in totalSlides"
+              :key="index"
+              @click="goToSlide(index)"
+              class="h-1 transition-all duration-300 rounded-full cursor-pointer"
+              :class="index === currentSlide ? 'w-8 bg-[#0063A9]' : 'w-2 bg-gray-300'"
+            />
+          </div>
         </div>
       </div>
     </div>

@@ -1,22 +1,25 @@
 <template>
   <MainLayout>
-    <!-- Top Categories Bar -->
-    <TopCategoriesBar />
+    <div class="bg-[#F8FAFF] flex flex-col gap-[50px]">
+      <!-- Top Categories Bar -->
+      <TopCategoriesBar />
 
-    <!-- Categories Section -->
-    <CategoriesSection />
+      <!-- Categories Section -->
+      <CategoriesSection />
 
-    <!-- Best Sellers Section -->
-    <BestSellersSection />
+      <!-- Best Sellers Section -->
+      <BestSellersSection />
 
-    <!-- News Section -->
-    <NewsSection />
+      <!-- News Section -->
+      <NewsSection />
 
-    <!-- Auction Items Section -->
-    <AuctionSection />
+      <!-- Auction Items Section -->
+      <AuctionSection />
 
-    <!-- Store Addresses Section -->
-    <StoreAddressesSection />
+      <!-- Store Addresses Section -->
+      <StoreAddressesSection />
+    </div>
+
   </MainLayout>
 </template>
 

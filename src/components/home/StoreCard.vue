@@ -1,93 +1,69 @@
 <template>
   <div
-    class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow"
+    class="bg-white rounded-lg p-4 hover:shadow-md transition-shadow"
   >
     <!-- Store Header -->
-    <div class="flex items-center justify-between mb-4">
-      <div class="flex items-center space-x-2">
-        <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
-          <span class="text-blue-600 text-xs font-bold">i</span>
+    <div class="pb-3 mb-3 border-b border-gray-200">
+      <div class="flex items-center space-x-2.5 w-full flex-1">
+        <div class=" bg-blue-100 rounded-full flex items-center justify-center">
+          <img
+            src="@/assets/iconCircle.svg"
+            alt="I"
+            class="w-[42px] h-[42px] object-contain"
+          />
         </div>
-        <h3 class="text-blue-600 font-semibold">{{ store.name }}</h3>
+        <div>
+          <h3 class="text-black  font-medium text-[18px] leading-[100%]">{{ store.name }}</h3>
+          <a class="text-[#0062D5] hover:text-blue-800 font-normal text-[12px] leading-[100%] underline">открыть в карте</a>
+
+        </div>
+
+        <!-- Arrow Icon -->
+        <div class="flex justify-end ml-auto ">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.66656 8.66664V7.3333L10.6666 7.3333L6.9999 3.66664L7.94656 2.71997L13.2266 7.99997L7.94656 13.28L6.9999 12.3333L10.6666 8.66664H2.66656Z" fill="#727272"/>
+          </svg>
+
+        </div>
       </div>
 
-      <button class="text-blue-600 hover:text-blue-800 text-sm font-medium">открыть в карте</button>
     </div>
 
     <!-- Store Details -->
-    <div class="space-y-3">
+    <div class="pt-3">
       <!-- Address -->
-      <div class="flex items-start space-x-3">
-        <svg
-          class="w-5 h-5 text-gray-400 mt-0.5 flex-shrink-0"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-          />
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-          />
+      <div class="flex items-start gap-3 mb-4 ">
+        <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M6.375 1.04789C3.40907 1.04789 0.907147 3.2026 1.11093 5.88604C1.14016 6.2709 1.18385 6.60592 1.24338 6.87177C1.54371 8.21301 2.48644 9.54537 3.54828 10.6764C4.60109 11.7979 5.72203 12.6703 6.30126 13.0934C6.34756 13.1272 6.40244 13.1272 6.44874 13.0934C7.02797 12.6703 8.14891 11.7979 9.20172 10.6764C10.2636 9.54537 11.2063 8.21301 11.5066 6.87177C11.5662 6.60592 11.6098 6.2709 11.6391 5.88604C11.8429 3.2026 9.34092 1.04789 6.375 1.04789ZM0.014978 5.96173C-0.245021 2.53803 2.92017 0 6.375 0C9.82983 0 12.995 2.53803 12.735 5.96173C12.7039 6.37181 12.6554 6.75945 12.5812 7.09061C12.2212 8.69854 11.1271 10.1965 10.0204 11.3754C8.90462 12.5639 7.72521 13.481 7.11692 13.9253C6.67636 14.2471 6.07364 14.2471 5.63308 13.9253C5.02479 13.481 3.84538 12.5639 2.72962 11.3754C1.62289 10.1965 0.528835 8.69854 0.168782 7.09061C0.0946288 6.75945 0.0461199 6.37181 0.014978 5.96173Z" fill="#0063A9"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M6.375 5.23943C5.86928 5.23943 5.45931 5.63039 5.45931 6.11267C5.45931 6.59495 5.86928 6.98591 6.375 6.98591C6.88072 6.98591 7.29068 6.59495 7.29068 6.11267C7.29068 5.63039 6.88072 5.23943 6.375 5.23943ZM4.36049 6.11267C4.36049 5.05166 5.26242 4.19155 6.375 4.19155C7.48758 4.19155 8.38951 5.05166 8.38951 6.11267C8.38951 7.17368 7.48758 8.0338 6.375 8.0338C5.26242 8.0338 4.36049 7.17368 4.36049 6.11267Z" fill="#0063A9"/>
         </svg>
-        <p class="text-sm text-gray-700">{{ store.address }}</p>
+        <p class="text-[18px] text-black leading-snug w-full md:w-[60%]">{{ store.address }}</p>
       </div>
 
-      <!-- Hours -->
-      <div class="flex items-center space-x-3">
-        <svg
-          class="w-5 h-5 text-gray-400 flex-shrink-0"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        <p class="text-sm text-gray-700">{{ store.hours }}</p>
-      </div>
-
-      <!-- Phone -->
-      <div class="flex items-center space-x-3">
-        <svg
-          class="w-5 h-5 text-gray-400 flex-shrink-0"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-          />
-        </svg>
-        <p class="text-sm text-gray-700">{{ store.phone }}</p>
+      <!-- Bottom row: hours left, phone right -->
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.20139 3.54167C7.52739 3.54167 7.79167 3.79203 7.79167 4.10088L7.79167 7.82895C7.79167 7.97726 7.72948 8.1195 7.61878 8.22437L5.25766 10.4612C5.02714 10.6796 4.6534 10.6796 4.42289 10.4612C4.19237 10.2428 4.19237 9.88875 4.42289 9.67037L6.61112 7.59731V4.10088C6.61112 3.79203 6.87539 3.54167 7.20139 3.54167Z" fill="#0063A9"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.08333 1.08974C5.54683 1.08974 3.44686 1.23075 2.13559 1.33234C1.70436 1.36575 1.36575 1.70436 1.33234 2.13559C1.23075 3.44686 1.08974 5.54683 1.08974 7.08333C1.08974 8.61984 1.23075 10.7198 1.33234 12.0311C1.36575 12.4623 1.70436 12.8009 2.13559 12.8343C3.44686 12.9359 5.54683 13.0769 7.08333 13.0769C8.61984 13.0769 10.7198 12.9359 12.0311 12.8343C12.4623 12.8009 12.8009 12.4623 12.8343 12.0311C12.9359 10.7198 13.0769 8.61984 13.0769 7.08333C13.0769 5.54683 12.9359 3.44686 12.8343 2.13559C12.8009 1.70436 12.4623 1.36575 12.0311 1.33234C10.7198 1.23075 8.61984 1.08974 7.08333 1.08974ZM2.05142 0.24585C3.3633 0.144215 5.50054 0 7.08333 0C8.66613 0 10.8034 0.144215 12.1152 0.24585C13.0819 0.32074 13.8459 1.08475 13.9208 2.05142C14.0225 3.3633 14.1667 5.50054 14.1667 7.08333C14.1667 8.66613 14.0225 10.8034 13.9208 12.1152C13.8459 13.0819 13.0819 13.8459 12.1152 13.9208C10.8034 14.0225 8.66613 14.1667 7.08333 14.1667C5.50054 14.1667 3.3633 14.0225 2.05142 13.9208C1.08475 13.8459 0.32074 13.0819 0.24585 12.1152C0.144215 10.8034 0 8.66613 0 7.08333C0 5.50054 0.144215 3.3633 0.24585 2.05142C0.32074 1.08475 1.08475 0.32074 2.05142 0.24585Z" fill="#0063A9"/>
+          </svg>
+          <p class="text-[16px] text-black">{{ store.hours }}</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.52979 2.30549L3.03792 0.991905C3.87085 0.266429 5.13418 0.353532 5.85965 1.18645L7.06025 2.56486C7.5587 3.13714 7.69031 3.94224 7.40003 4.64344L7.26011 4.98142C6.96983 5.68263 7.10144 6.48772 7.59989 7.06L9.71647 9.49006C10.2149 10.0623 10.9943 10.3032 11.7288 10.1119L12.0827 10.0197C12.8171 9.82838 13.5966 10.0692 14.095 10.6415L15.7116 12.4975C16.4371 13.3304 16.3499 14.5937 15.517 15.3192L14.0089 16.6328C12.7595 17.721 10.8645 17.5904 9.7763 16.341L1.23796 6.53809C0.149749 5.2887 0.280403 3.39371 1.52979 2.30549Z" stroke="#0063A9" stroke-linecap="round"/>
+          </svg>
+          <p class="text-[16px] text-black">{{ store.phone }}</p>
+        </div>
       </div>
     </div>
 
-    <!-- Arrow Icon -->
-    <div class="flex justify-end mt-4">
-      <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-      </svg>
-    </div>
+
   </div>
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
+defineProps({
   store: {
     type: Object,
     required: true,

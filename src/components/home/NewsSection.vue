@@ -1,41 +1,33 @@
 <template>
-  <section class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class=" relative">
+    <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
-      <div class="flex items-center justify-between mb-8">
-        <h2 class="text-3xl font-bold text-gray-900">Новости</h2>
-        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium"> все </a>
-      </div>
 
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-3xl text-black font-semibold text-[25px] leading-[100%]">Новости</h2>
+        <a href="#" class="text-[#3186C3] hover:text-blue-800 font-semibold text-[16px] leading-[100%]">все</a>
+      </div>
       <!-- Carousel Container -->
-      <div class="relative">
+      <div class="">
         <!-- Navigation Arrows -->
         <button
           @click="previousSlide"
-          class="absolute left-0 top-1/2 -translate-y-1/2 -ml-4 z-10 bg-white rounded-full shadow-lg p-3 hover:shadow-xl transition-shadow"
+          class="absolute left-9 top-1/2 -translate-y-1/2 -ml-4 z-10 cursor-pointer rounded-full  p-3 hover:shadow-xl transition-shadow"
         >
-          <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M15 19l-7-7 7-7"
-            />
+          <svg width="11" height="22" viewBox="0 0 11 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.62183 20.55L1.47183 12.4C0.509326 11.4375 0.509326 9.8625 1.47183 8.9L9.62183 0.75" stroke="#171717" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
+
         </button>
 
         <button
           @click="nextSlide"
-          class="absolute right-0 top-1/2 -translate-y-1/2 -mr-4 z-10 bg-white rounded-full shadow-lg p-3 hover:shadow-xl transition-shadow"
+          class="absolute right-9 top-1/2 -translate-y-1/2 -mr-4 z-10 cursor-pointer p-3 hover:shadow-xl transition-shadow"
         >
-          <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9 5l7 7-7 7"
-            />
+          <svg class="rotate-180" width="11" height="22" viewBox="0 0 11 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.62183 20.55L1.47183 12.4C0.509326 11.4375 0.509326 9.8625 1.47183 8.9L9.62183 0.75" stroke="#171717" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
+
         </button>
 
         <!-- News Carousel -->
@@ -61,14 +53,16 @@
         </div>
 
         <!-- Pagination Dots -->
-        <div class="flex justify-center mt-8 space-x-2">
-          <button
-            v-for="(slide, index) in totalSlides"
-            :key="index"
-            @click="goToSlide(index)"
-            class="w-2 h-2 rounded-full transition-colors"
-            :class="index === currentSlide ? 'bg-blue-600' : 'bg-gray-300'"
-          />
+        <div class="flex justify-center mt-8">
+          <div class="flex space-x-1">
+            <button
+              v-for="(slide, index) in totalSlides"
+              :key="index"
+              @click="goToSlide(index)"
+              class="h-1 transition-all duration-300 rounded-full"
+              :class="index === currentSlide ? 'w-8 bg-[#0063A9]' : 'w-2 bg-gray-300'"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -109,20 +103,7 @@ const newsItems = ref([
     buttonText: 'Подробнее',
     backgroundImage: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
   },
-  {
-    id: 5,
-    title: 'На кухонную мебель',
-    discount: '-50%',
-    buttonText: 'Подробнее',
-    backgroundImage: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-  },
-  {
-    id: 6,
-    title: 'На кухонную мебель',
-    discount: '-50%',
-    buttonText: 'Подробнее',
-    backgroundImage: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
-  },
+ 
 ])
 
 const currentSlide = ref(0)

@@ -1,20 +1,20 @@
 <template>
   <div
     @click="navigateToProduct"
-    class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow cursor-pointer"
+    class="bg-white rounded-md  border border-gray-100 overflow-hidden transition-shadow duration-300 hover:shadow-[0_10px_30px_rgba(0,0,0,0.07)] cursor-pointer p-3"
   >
     <!-- Product Image -->
-    <div class="aspect-square bg-[#7EC4E8] relative">
-      <img :src="product.image" :alt="product.name" class="w-full h-full object-cover" />
+    <div class="aspect-square relative">
+      <img :src="product.image" :alt="product.name" class="w-full h-full object-cover rounded-lg" />
 
       <!-- Heart Icon -->
       <button
         @click="toggleLike"
-        class="absolute top-3 right-3 p-2 bg-white rounded-full shadow-sm hover:bg-gray-50 transition-colors"
+        class="absolute top-2.5 right-2.5 p-2 bg-[#FFFFFF80] rounded-sm shadow-sm hover:bg-gray-50 transition-colors"
       >
         <svg
           class="w-5 h-5 transition-colors"
-          :class="isLiked ? 'text-red-500 fill-red-500' : 'text-gray-400 hover:text-red-500'"
+          :class="isLiked ? 'text-[#174261] fill-[#174261]' : 'text-gray-400 hover:text-red-500'"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -30,64 +30,77 @@
     </div>
 
     <!-- Product Info -->
-    <div class="p-4">
+    <div class="pt-4">
       <!-- Product Name -->
-      <h3 class="font-medium text-gray-900 mb-2 line-clamp-2 text-sm">
+      <h3
+        class="text-[#1A1919] mb-0.5 line-clamp-2 font-medium text-[14px] leading-[100%] tracking-[2%]"
+      >
         {{ product.name }}
       </h3>
 
       <!-- Price -->
-      <p class="text-lg font-bold text-gray-900 mb-2">{{ product.price }} {{ product.currency }}</p>
+      <div class="mb-0.5 flex items-baseline gap-2">
+        <span class=""
+              :class="product.originalPrice ? 'text-[#FF0000] font-bold text-[19px] ' : 'text-lg font-bold text-black'"
+
+        >{{ product.price }} {{ product.currency }}</span>
+        <span v-if="product.originalPrice" class="text-[#808080]  font-bold text-[14px] leading-[100%] line-through">
+          {{ product.originalPrice }} {{ product.currency }}
+        </span>
+      </div>
 
       <!-- Availability -->
-      <p class="text-sm text-green-600 mb-2" v-if="product.inStock">В наличии</p>
+      <p
+        class="text-sm text-[#73CB5E] mb-0.5 font-medium text-[12px] leading-[100%]"
+        v-if="product.inStock"
+      >
+        В наличии
+      </p>
 
       <!-- Features -->
       <div class="mb-4">
-        <span v-for="feature in product.features" :key="feature" class="text-sm text-gray-600">
+        <span
+          v-for="feature in product.features"
+          :key="feature"
+          class="text-[#3286C2] font-normal text-[12px] leading-[100%]"
+        >
           • {{ feature }}
         </span>
       </div>
 
       <!-- Quantity Selector -->
       <div class="flex items-center justify-between">
-        <div class="flex items-center border border-gray-300 rounded-lg">
-          <button
-            @click="decreaseQuantity"
-            class="px-3 py-2 text-gray-600 hover:text-white hover:bg-gray-600 rounded-l-lg transition-colors"
-            :disabled="product.quantity <= 0"
-          >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
-            </svg>
-          </button>
+        <!-- Minus -->
+        <button
+          @click="decreaseQuantity"
+          class="w-8 h-8 flex items-center justify-center rounded-full bg-[#F5F5F5] hover:bg-[#3286C3] text-black hover:text-white transition-colors"
+          :class="product.quantity <= 0 ? 'opacity-50 cursor-not-allowed' : ''"
+          :disabled="product.quantity <= 0"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+          </svg>
+        </button>
 
-          <span
-            class="px-3 py-2 text-sm font-medium min-w-[3rem] text-center"
-            :class="
-              product.quantity === 0 ? 'bg-[#4A8FB9] text-white rounded-full' : 'text-gray-900'
-            "
-          >
-            {{ product.quantity }}
-          </span>
+        <!-- Qty -->
+        <span class="px-3 py-2 text-base font-semibold min-w-[3rem] text-center text-gray-900">
+          {{ product.quantity }}
+        </span>
 
-          <button
-            @click="increaseQuantity"
-            class="px-3 py-2 text-gray-600 hover:text-white hover:bg-gray-600 rounded-r-lg transition-colors"
-            :class="
-              product.quantity === 0 ? 'bg-[#4A8FB9] text-white hover:bg-blue-700 rounded-full' : ''
-            "
-          >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-              />
-            </svg>
-          </button>
-        </div>
+        <!-- Plus -->
+        <button
+          @click="increaseQuantity"
+          class="w-10 h-10 flex items-center justify-center rounded-full bg-[#F5F5F5] hover:bg-[#3286C3] text-black hover:text-white transition-colors"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+            />
+          </svg>
+        </button>
       </div>
     </div>
   </div>

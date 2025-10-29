@@ -1,79 +1,30 @@
 <template>
-  <section class="bg-gray-100 py-4">
+  <section class=" py-4">
     <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center space-x-6 overflow-x-auto">
-        <!-- Скидки -->
+        <!-- Categories (data-driven) -->
         <div
-          class="flex flex-col items-center space-y-2 flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
+          v-for="(item, i) in items"
+          :key="i"
+          class="flex flex-col items-center gap-2 flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
+          @click="select(i)"
         >
-          <div
-            class="w-[60px] h-[60px] bg-white rounded-full overflow-hidden flex items-center justify-center shadow-sm border border-gray-200"
-          >
-            <img src="/cat1.png" alt="Скидки" class="w-full h-full" />
-          </div>
-          <span class="text-xs text-gray-700 font-medium">Скидки</span>
-        </div>
+          <!-- Real category with image -->
+          <template v-if="item.type === 'real'">
+            <div
+              class="w-[60px] h-[60px] bg-white rounded-full overflow-hidden flex items-center justify-center shadow-sm border-[1.5px]"
+              :class="item.selected ? 'border-[#5C5C5C]' : 'border-[#D7EEFE]'"
+            >
+              <img :src="item.img" :alt="item.title" class="w-full h-full" />
+            </div>
+            <span class="text-xs text-black hover:text-gray-700 font-normal text-[12px] leading-[100%] text-center">{{ item.title }}</span>
+          </template>
 
-        <!-- Акции -->
-        <div
-          class="flex flex-col items-center space-y-2 flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
-        >
-          <div
-            class="w-[60px] h-[60px] bg-white rounded-full overflow-hidden flex items-center justify-center shadow-sm border border-gray-200"
-          >
-            <img src="/cat1.png" alt="Скидки" class="w-full h-full" />
-          </div>
-          <span class="text-xs text-gray-700 font-medium">Акции</span>
-        </div>
-
-        <!-- Распродажа -->
-        <div
-          class="flex flex-col items-center space-y-2 flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
-        >
-          <div
-            class="w-[60px] h-[60px] bg-white rounded-full overflow-hidden flex items-center justify-center shadow-sm border border-gray-200"
-          >
-            <img src="/cat1.png" alt="Скидки" class="w-full h-full" />
-          </div>
-          <span class="text-xs text-gray-700 font-medium">Распродажа</span>
-        </div>
-
-        <!-- Подарки -->
-        <div
-          class="flex flex-col items-center space-y-2 flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
-        >
-          <div
-            class="w-[60px] h-[60px] bg-white rounded-full overflow-hidden flex items-center justify-center shadow-sm border border-gray-200"
-          >
-            <img src="/cat1.png" alt="Скидки" class="w-full h-full" />
-          </div>
-          <span class="text-xs text-gray-700 font-medium">Подарки</span>
-        </div>
-
-        <!-- Подарки (duplicate) -->
-        <div
-          class="flex flex-col items-center space-y-2 flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
-        >
-          <div
-            class="w-[60px] h-[60px] bg-white rounded-full overflow-hidden flex items-center justify-center shadow-sm border border-gray-200"
-          >
-            <img src="/cat1.png" alt="Скидки" class="w-full h-full" />
-          </div>
-          <span class="text-xs text-gray-700 font-medium">Подарки</span>
-        </div>
-
-        <!-- Empty circles for spacing -->
-        <div class="flex flex-col items-center space-y-2 flex-shrink-0">
-          <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
-          <span class="text-xs text-gray-400">...</span>
-        </div>
-        <div class="flex flex-col items-center space-y-2 flex-shrink-0">
-          <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
-          <span class="text-xs text-gray-400">...</span>
-        </div>
-        <div class="flex flex-col items-center space-y-2 flex-shrink-0">
-          <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
-          <span class="text-xs text-gray-400">...</span>
+          <!-- Placeholder (empty circle + bar) -->
+          <template v-else>
+            <div class="w-[60px] h-[60px] rounded-full bg-gray-200 border border-gray-200"></div>
+            <div class="h-3 w-12 bg-gray-200 "></div>
+          </template>
         </div>
       </div>
     </div>
@@ -81,7 +32,32 @@
 </template>
 
 <script setup lang="ts">
-// Component logic if needed
+import { ref } from 'vue'
+
+type RealItem = { type: 'real'; title: string; img: string; selected: boolean }
+type PlaceholderItem = { type: 'placeholder' }
+type Item = RealItem | PlaceholderItem
+
+const items = ref<Item[]>([
+  { type: 'real', title: 'Скидки', img: '/cat1.png', selected: true },
+  { type: 'real', title: 'Акции', img: '/cat1.png', selected: true },
+  { type: 'real', title: 'Распродажа', img: '/cat1.png', selected: false },
+  { type: 'real', title: 'Подарки', img: '/cat1.png', selected: false },
+  { type: 'real', title: 'Подарки', img: '/cat1.png', selected: false },
+  // placeholders to fill the line like in design
+  { type: 'placeholder' },
+  { type: 'placeholder' },
+  { type: 'placeholder' },
+  { type: 'placeholder' },
+  { type: 'placeholder' },
+  { type: 'placeholder' },
+])
+
+const select = (i: number) => {
+  const item = items.value[i]
+  if (item.type !== 'real') return
+  item.selected = !item.selected
+}
 </script>
 
 <style scoped>
