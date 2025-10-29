@@ -86,49 +86,49 @@
     </div>
 
     <!-- Dropdown Menu -->
-    <transition name="slide-fade">
-      <div
-        v-if="isMenuOpen"
-        class="absolute left-0 right-0 top-16 bg-white text-gray-800 shadow-xl z-50 border-t"
-      >
-        <div class="max-w-7xl mx-auto px-4 py-6">
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div>
-              <h3 class="font-bold mb-3 text-blue-600">Ванные</h3>
-              <ul class="space-y-2 text-sm">
-                <li><a href="#" class="hover:text-blue-600 block">Акриловые ванны</a></li>
-                <li><a href="#" class="hover:text-blue-600 block">Чугунные ванны</a></li>
-                <li><a href="#" class="hover:text-blue-600 block">Стальные ванны</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 class="font-bold mb-3 text-blue-600">Смесители</h3>
-              <ul class="space-y-2 text-sm">
-                <li><a href="#" class="hover:text-blue-600 block">Для ванны</a></li>
-                <li><a href="#" class="hover:text-blue-600 block">Для кухни</a></li>
-                <li><a href="#" class="hover:text-blue-600 block">Для раковины</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 class="font-bold mb-3 text-blue-600">Душевые кабины</h3>
-              <ul class="space-y-2 text-sm">
-                <li><a href="#" class="hover:text-blue-600 block">С поддоном</a></li>
-                <li><a href="#" class="hover:text-blue-600 block">Без поддона</a></li>
-                <li><a href="#" class="hover:text-blue-600 block">Угловые</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 class="font-bold mb-3 text-blue-600">Бойлеры</h3>
-              <ul class="space-y-2 text-sm">
-                <li><a href="#" class="hover:text-blue-600 block">Электрические</a></li>
-                <li><a href="#" class="hover:text-blue-600 block">Газовые</a></li>
-                <li><a href="#" class="hover:text-blue-600 block">Двухконтурные</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </transition>
+<!--    <transition name="slide-fade">-->
+<!--      <div-->
+<!--        v-if="isMenuOpen"-->
+<!--        class="absolute left-0 right-0 top-16 bg-white text-gray-800 shadow-xl z-50 border-t"-->
+<!--      >-->
+<!--        <div class="max-w-7xl mx-auto px-4 py-6">-->
+<!--          <div class="grid grid-cols-1 md:grid-cols-4 gap-6">-->
+<!--            <div>-->
+<!--              <h3 class="font-bold mb-3 text-blue-600">Ванные</h3>-->
+<!--              <ul class="space-y-2 text-sm">-->
+<!--                <li><a href="#" class="hover:text-blue-600 block">Акриловые ванны</a></li>-->
+<!--                <li><a href="#" class="hover:text-blue-600 block">Чугунные ванны</a></li>-->
+<!--                <li><a href="#" class="hover:text-blue-600 block">Стальные ванны</a></li>-->
+<!--              </ul>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <h3 class="font-bold mb-3 text-blue-600">Смесители</h3>-->
+<!--              <ul class="space-y-2 text-sm">-->
+<!--                <li><a href="#" class="hover:text-blue-600 block">Для ванны</a></li>-->
+<!--                <li><a href="#" class="hover:text-blue-600 block">Для кухни</a></li>-->
+<!--                <li><a href="#" class="hover:text-blue-600 block">Для раковины</a></li>-->
+<!--              </ul>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <h3 class="font-bold mb-3 text-blue-600">Душевые кабины</h3>-->
+<!--              <ul class="space-y-2 text-sm">-->
+<!--                <li><a href="#" class="hover:text-blue-600 block">С поддоном</a></li>-->
+<!--                <li><a href="#" class="hover:text-blue-600 block">Без поддона</a></li>-->
+<!--                <li><a href="#" class="hover:text-blue-600 block">Угловые</a></li>-->
+<!--              </ul>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <h3 class="font-bold mb-3 text-blue-600">Бойлеры</h3>-->
+<!--              <ul class="space-y-2 text-sm">-->
+<!--                <li><a href="#" class="hover:text-blue-600 block">Электрические</a></li>-->
+<!--                <li><a href="#" class="hover:text-blue-600 block">Газовые</a></li>-->
+<!--                <li><a href="#" class="hover:text-blue-600 block">Двухконтурные</a></li>-->
+<!--              </ul>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </transition>-->
   </header>
 </template>
 
